@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1000753929358",
+    "firebase_url": "https://sacc-transtationbeta-default-rtdb.firebaseio.com",
+    "project_id": "sacc-transtationbeta",
+    "storage_bucket": "sacc-transtationbeta.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1000753929358:android:7650972d8ad0f29a85fddf",
+        "android_client_info": {
+          "package_name": "com.mybas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1000753929358-d4incuqh3dn3tc26drv2ce0nq67f85ep.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mybas",
+            "certificate_hash": "8c615c50c6d5543488fb23910b0c1ea7e7f606ac"
+          }
+        },
+        {
+          "client_id": "1000753929358-3tpl7fqso2n19efqo4q48jhqatfqivg4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxny7ofEZ9QwlpgQVdPX2Gon-OYxez3m8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1000753929358-3tpl7fqso2n19efqo4q48jhqatfqivg4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
