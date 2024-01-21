@@ -27,6 +27,7 @@ const App = () => {
     dataDB: {},
     index: '',
     type: '',
+    scroll: 0,
   });
   const [bell, setBell] = useState();
   useEffect(() => {
@@ -54,16 +55,14 @@ const App = () => {
     });
   };
   useEffect(() => {
-    // Masuk ke mode penuh layar ketika komponen did mount
     FullScreenChz.enable();
     return () => {
-      // Keluar dari mode penuh layar ketika komponen akan unmount
       FullScreenChz.disable();
     };
   }, []);
   return (
     <ThemeContext.Provider value={{context, setContext}}>
-      {bell == 1 && playsound()}
+      {bell == '1' && playsound()}
       <Router />
     </ThemeContext.Provider>
   );

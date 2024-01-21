@@ -71,12 +71,29 @@ const HomeScreen = ({navigation}) => {
               source={require('../assets/gesegnet.png')}
             />
           </View> */}
-          <Button
-            paddingHorizontal={context.type == 'Tablet' ? 10 : 5}
-            paddingVertical={context.type == 'Tablet' ? 20 : 15}
-            fontSize={context.type == 'Tablet' ? 30 : 15}
-            onPress={() => navigation.navigate('Light')}
-          />
+          <View style={{flexDirection: 'row'}}>
+            <Button
+              paddingHorizontal={context.type == 'Tablet' ? 10 : 5}
+              paddingVertical={context.type == 'Tablet' ? 20 : 15}
+              fontSize={context.type == 'Tablet' ? 25 : 14}
+              onPress={() => navigation.navigate('Light')}
+            />
+            <Gap width={10} />
+            <TouchableOpacity
+              style={{
+                padding: 20,
+                borderRadius: 10,
+                backgroundColor: '#2077fa',
+                justifyContent: 'center',
+              }}
+              onPress={() => navigation.navigate('Monitor')}>
+              <IconMa
+                name="lightning-bolt"
+                color="yellow"
+                size={moderateScale(25)}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
         <View
           style={{

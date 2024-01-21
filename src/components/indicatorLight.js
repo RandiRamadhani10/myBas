@@ -14,14 +14,21 @@ import {ThemeContext} from '../../App';
 import {updateSwitchLight} from '../api';
 
 const screen = Dimensions.get('screen');
-const IndicatorLight = ({unit = '%', title = 'Kamar Tidur', data, index}) => {
+const IndicatorLight = ({
+  unit = '%',
+  title = 'Default',
+  data = [],
+  index,
+  indexs,
+  handleRefresh,
+  manual,
+}) => {
   const {context, setContext} = useContext(ThemeContext);
   const obj = {
     tm: data[`tm${index}`],
     sl: data[`sl${index}`],
     sys: data[`sys${index}`],
   };
-
   const shadowOpt = {
     width: moderateScale(20),
     height: moderateScale(20),
@@ -35,12 +42,22 @@ const IndicatorLight = ({unit = '%', title = 'Kamar Tidur', data, index}) => {
   };
   return (
     <TouchableOpacity
-      onPress={() => updateSwitchLight(obj.sl == '1' ? '0' : '1', index)}
-      style={styles.container(
-        context.type == 'Tablet' ? screen.height * 0.3 : screen.height * 0.45,
-      )}>
-      <View>
-        <Text style={[styles.text, {fontSize: moderateScale(20)}]}>
+      onPress={() => {
+        updateSwitchLight(obj.sl == '1' ? '0' : '1', index);
+      }}
+      disabled={manual == 0 ? false : true}
+      style={[
+        styles.container(
+          context.type == 'Tablet' ? screen.height * 0.3 : screen.height * 0.45,
+        ),
+        ,
+      ]}>
+      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+        <Text
+          style={[
+            styles.text,
+            {fontSize: moderateScale(18), opacity: manual == 0 ? 1 : 0.2},
+          ]}>
           {title}
         </Text>
       </View>
@@ -66,19 +83,37 @@ const IndicatorLight = ({unit = '%', title = 'Kamar Tidur', data, index}) => {
                 height: moderateScale(20),
                 borderRadius: moderateScale(50),
                 backgroundColor: obj.sl == '1' ? Colors.green : Colors.gray,
+                opacity: manual == 0 ? 1 : 0.2,
               }}></View>
           </BoxShadow>
           <TouchableOpacity
             style={styles.button}
-            onPress={() =>
+            onPress={() => {
               setContext({
                 ...context,
                 modalOpen: true,
                 dataDB: obj,
                 index: index,
-              })
-            }>
-            <Icon name="sun" color={Colors.dark} size={moderateScale(20)} />
+                manual: manual,
+              });
+            }}>
+            {obj?.sys == '1' ? (
+              <Icon name="sun" color={Colors.dark} size={moderateScale(20)} />
+            ) : (
+              <Icon name="clock" color={Colors.dark} size={moderateScale(20)} />
+            )}
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              setContext({
+                ...context,
+                modalOpenRoom: true,
+                name: title,
+                index: index,
+              });
+            }}>
+            <Icon name="edit-3" color={Colors.dark} size={moderateScale(20)} />
           </TouchableOpacity>
         </View>
       </View>

@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect, useContext, scrollView} from 'react';
 import {
   View,
   Dimensions,
@@ -16,21 +16,22 @@ import {
   ButtonIcon,
   Gap,
   IndicatorAir,
-  IndicatorTemp,
   IndicatorTime,
   SwiperBase,
 } from '../components';
 
 import {getData} from '../api';
 import IconMa from 'react-native-vector-icons/MaterialCommunityIcons';
+import ModalRoom from '../utils/ModalRoom';
 
 const screen = Dimensions.get('screen');
+
 const Lighting = ({navigation}) => {
   const {context, setContext} = useContext(ThemeContext);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(false);
   useEffect(() => {
     getData(setData);
-  }, []);
+  }, [context.modalOpen]);
   return (
     <ImageBackground
       source={require('../assets/bg.png')}
@@ -222,7 +223,7 @@ const Lighting = ({navigation}) => {
           justifyContent: 'space-between',
         }}>
         <View style={{flex: 1, justifyContent: 'space-between'}}>
-          <SwiperBase data={data} />
+          {data && <SwiperBase datas={data} />}
         </View>
         <Gap width={15} />
         {context.type == 'Tablet' ? (
@@ -293,6 +294,7 @@ const Lighting = ({navigation}) => {
         </View>
       </View> */}
       <Modals data={data} />
+      <ModalRoom data={data} />
     </ImageBackground>
   );
 };

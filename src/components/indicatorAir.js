@@ -4,6 +4,7 @@ import {View, StyleSheet, Text, Dimensions} from 'react-native';
 import {Colors} from '../utils';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {ThemeContext} from '../../App';
+import Gap from './gap';
 const screen = Dimensions.get('screen');
 const IndicatorAir = ({
   unit = '%',
@@ -12,6 +13,7 @@ const IndicatorAir = ({
   Icons,
   data,
   isTablet = true,
+  fontSize = 40,
 }) => {
   const {context, setContext} = useContext(ThemeContext);
   const width = isTablet == false ? '40%' : '20%';
@@ -19,7 +21,7 @@ const IndicatorAir = ({
   return (
     <View
       style={styles.container(
-        context.type == 'Tablet' ? screen.width * 0.19 : width,
+        context.type == 'Tablet' ? screen.width * 0.19 : screen.width * 0.19,
       )}>
       <View>
         <Text style={[styles.text, {fontSize: moderateScale(20)}]}>
@@ -44,12 +46,13 @@ const IndicatorAir = ({
               {
                 fontSize:
                   context.type == 'Tablet'
-                    ? moderateScale(40)
+                    ? moderateScale(fontSize)
                     : moderateScale(font),
               },
             ]}>
             {data}
           </Text>
+          <Gap width={5} />
           <Text style={[styles.text, {fontSize: moderateScale(14)}]}>
             {unit}
           </Text>

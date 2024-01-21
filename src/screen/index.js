@@ -1,3 +1,4 @@
 import HomeScreen from './homeScreen';
 import Lighting from './lighting';
-export {HomeScreen, Lighting};
+import Monitoring from './monitoring';
+export {HomeScreen, Lighting, Monitoring};

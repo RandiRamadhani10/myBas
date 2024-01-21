@@ -23,7 +23,7 @@ const Chart = ({data, width = 0, height = 0}) => {
         data.dw11,
         data.dw12,
       ],
-      color: () => '#ffbe0b',
+      colors: ['red', 'blue', 'green', 'yellow'],
       strokeWidth: 4,
     },
   ];
@@ -47,7 +47,7 @@ const Chart = ({data, width = 0, height = 0}) => {
   const chartConfig = {
     backgroundGradientFrom: Colors.dark,
     backgroundGradientTo: Colors.dark,
-    color: (opacity = 2) => `rgba(255, 255, 255, ${opacity})`,
+    color: (opacity = 1) => `rgba(42, 165, 221, ${opacity})`,
     strokeWidth: 2, // optional, default 3
     barPercentage: 0.5,
     useShadowColorFromDataset: false,
